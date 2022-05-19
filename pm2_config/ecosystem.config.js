@@ -2,7 +2,7 @@ module.exports = {
   deploy : {
     production : {
       user : 'isla',
-      host : '172.16.2.95',
+      host : '192.168.1.110',
       ref  : 'origin/master',
       repo : 'git@git.vmo.dev:global/vmo-devops-internal/fresher-project/sonpv-project.git',
       path : '/home/isla/flask_blog',
