@@ -1,7 +1,7 @@
 {
     "apps" : [{
       "name": "flask_blog",
-      "script": "run.py",
+      "exec": "run.py",
       "env_dev": {
         "app": "dev"
       },
