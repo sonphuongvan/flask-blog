@@ -23,7 +23,8 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
-      - mynetwork
+      mynetwork:
+        ipv4_address: 172.20.0.2
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: flask_blog
