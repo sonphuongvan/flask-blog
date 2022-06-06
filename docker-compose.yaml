@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  app:
+    hostname: app
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    environment:
+      app: prod
+    depends_on:
+      - mysql
+    
+  mysql:
+    hostname: mysql
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: flask_blog
+      
+
+volumes:
+  mysql-data:
+    

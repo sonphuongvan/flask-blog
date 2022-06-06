@@ -5,7 +5,6 @@ FROM python:3.8-slim-buster
 WORKDIR /flask_blog
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-ENV app=dev \
-    FLASK_APP=run.py
+ENV app=prod
 COPY . .
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "/usr/local/bin/python", "run.py"]
