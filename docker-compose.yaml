@@ -10,18 +10,30 @@ services:
       - 5000:5000
     environment:
       app: prod
+    networks:
+      - mynetwork
     depends_on:
       - mysql
     
   mysql:
     hostname: mysql
+    ports:
+      - 3306:3306
     image: mysql:5.7
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - mynetwork
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: flask_blog
       
+networks:
+  mynetwork:
+    name: mynetwork
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
 
 volumes:
   mysql-data:
