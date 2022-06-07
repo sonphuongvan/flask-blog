@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+
+  app:
+    hostname: app
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    environment:
+      app: prod
+    networks:
+      - mynetwork
+    depends_on:
+      - mysql
+    
+  mysql:
+    hostname: mysql
+    ports:
+      - 3306:3306
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      mynetwork:
+        ipv4_address: 172.20.0.2
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: flask_blog
+      
+networks:
+  mynetwork:
+    name: mynetwork
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  mysql-data:
+    
