@@ -3,7 +3,7 @@ blinker
 certifi
 cffi
 click
-Flask==2.0.1
+Flask==2.2.5
 Flask-Bcrypt
 Flask-Login
 Flask-Mail
