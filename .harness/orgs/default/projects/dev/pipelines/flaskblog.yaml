@@ -1,0 +1,40 @@
+pipeline:
+  name: flask-blog
+  identifier: flaskblog
+  projectIdentifier: dev
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: flask-blog
+        build: <+input>
+  stages:
+    - stage:
+        name: flask-blog
+        identifier: flaskblog
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          delegateSelectors:
+            - docker-delegate
+          runtime:
+            type: Docker
+            spec: {}
+          platform:
+            os: Linux
+            arch: Amd64
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: TEST
+                  identifier: TEST
+                  spec:
+                    shell: Sh
+                    command: echo 'hello world'
