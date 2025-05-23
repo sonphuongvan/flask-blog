@@ -21,8 +21,6 @@ pipeline:
           caching:
             enabled: true
             override: true
-          delegateSelectors:
-            - docker-delegate
           runtime:
             type: Docker
             spec: {}
@@ -38,3 +36,5 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo 'hello world'
+                  delegateSelectors:
+                    - docker-delegate
